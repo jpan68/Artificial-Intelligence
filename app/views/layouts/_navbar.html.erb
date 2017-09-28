@@ -1,0 +1,88 @@
+<nav id="main-nav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <img class="img-responsive navbar-logo" src="<%= asset_path('demo5.JPG') %>" alt="GT Pal logo">
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <% if logged_in? %>
+                  <ul class="nav navbar-nav navb-position">
+                    <li>
+                        <a href="#">My Playlist</a>
+                    </li>
+                    <li class="dropdown" id="water-report-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><%= @current_user.first_name %></b> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="water-report-dropdown">
+                            <li>
+                                <a href="<%= edit_user_path(@current_user) %>">Edit Profile</a>
+                            </li>
+                            <li>
+                                <a href="<%= logout_path %>" data-method="delete">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                  </ul>
+                  <% else %>
+                  <ul class="nav navbar-nav navb-position">
+                      <li class="page-scroll">
+                          <a href="#features">HOME</a>
+                      </li>
+                  </ul>
+                  <ul class="nav navbar-nav navb-position navbar-right">
+                      <li class="navbar-signup">
+                          <a href="<%= signup_path %>" class="header-modal" data-modal-type="signup">Sign Up</a>
+                      </li>
+                      <li class="navbar-login">
+                          <a href="<%= login_path %>" class="header-modal" data-modal-type="login">Login</a>
+                      </li>
+                  </ul>
+                <% end %>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Signup/login modal -->
+<div class="modal fade" id="login-signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup_modal_title" data-redirect-url="/">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+var ajaxModalCallInHeader = function(_url) {
+    $.ajax({
+        url: _url,
+        success: function(data) {
+            $_modal = $('#login-signup-modal');
+            $_modal.find('.modal-body').html('');
+            $(data).appendTo('#login-signup-modal .modal-body');
+            $_modal.modal('show');
+        }
+    });
+}
+
+$('document').ready(function() {
+    $('.dropdown-toggle').dropdown();
+
+    $(".header-modal").on("click", function(e) {
+        e.preventDefault();
+        _url = $(this).attr("href");
+
+        ajaxModalCallInHeader(_url);
+    });
+
+})
+
+</script>

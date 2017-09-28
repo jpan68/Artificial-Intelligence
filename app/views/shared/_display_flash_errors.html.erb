@@ -1,0 +1,7 @@
+<% if flash[:errors].present? && flash[:errors].class == Hash %>
+	<% flash[:errors].each do |key, msg| %>
+      <ul class="alert alert-danger">
+				<li><%= msg %></li>
+			</ul>
+  <% end %>
+<% end %>

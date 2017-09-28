@@ -1,0 +1,32 @@
+<%= render 'shared/jumbotron', content: 'Edit My Profile' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<%= form_for @user, url: { action: :update }, html: { class: 'edit-user-form' } do |f| %>
+				<%= render 'shared/display_flash_errors' %>
+
+		    <div class="field-wrapper">
+		      <div class="first_name">
+		      	<label for="first-name">First name</label>
+		        <input type="text" name="user[first_name]" id="first-name" class="form-control" placeholder="First name" value="<%= @user.first_name %>">
+		      </div>
+		      <div class="last_name">
+		      	<label for="last-name">Last name</label>
+		        <input type="text" name="user[last_name]" class="form-control" placeholder="Last name" value="<%= @user.last_name %>">
+		      </div>
+		      <div class="email">
+		      	<label for="email">Email</label>
+		        <input type="email" name="user[email]" id="email" class="form-control" placeholder="Email" value="<%= @user.email %>">
+		      </div>
+		      <div class="help-block text-right"><a href="<%= edit_password_user_path %>">Change password</a></div>
+		    </div>
+
+		    <div class="submit">
+		      <%= f.submit 'Submit', class: 'btn' %>
+		    </div>
+
+			<% end %>
+		</div>
+	</div>
+</div>

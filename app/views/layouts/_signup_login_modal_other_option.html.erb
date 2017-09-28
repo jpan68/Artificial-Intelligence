@@ -1,0 +1,26 @@
+<div class="other-option">
+	<% if params[:controller] == 'users' %>
+	  <span>Already a member?</span>
+	  <a href="/login" class="login-signup-redirect">Sign In</a>
+		</div>
+	<% else %>
+    <span>Not a member yet?</span>
+    <a href="/signup" class="login-signup-redirect">Sign Up</a>
+	<% end %>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('.login-signup-redirect').click(function(e) {
+	  if ($('.signup-login-wrapper').parent().hasClass('modal-body')) {
+	    e.preventDefault(); 
+
+	    _url = $(this).attr('href');
+	    ajaxModalCallInHeader(_url);
+	  }
+	});
+
+})
+</script>

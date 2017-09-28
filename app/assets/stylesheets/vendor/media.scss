@@ -1,0 +1,41 @@
+@mixin MEDIA($screens...) {
+  @each $screen in $screens {
+    @if $screen == xs {
+      @media (max-width: $screen-xs-max) { @content; }
+    }
+    @if $screen == sm {
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
+    }
+    @if $screen == md {
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max) { @content; }
+    }
+    @if $screen == lg {
+      @media (min-width: $screen-lg-min) { @content; }
+    }
+  }
+}
+
+@mixin MEDIA-XS {
+  @media (max-width: $screen-xs-max) { @content; }
+}
+@mixin MEDIA-NOT-XS {
+  @media (min-width: $screen-sm-min) { @content; }
+}
+
+@mixin MEDIA-SM {
+  @media (max-width: $screen-sm-max) { @content; }
+}
+@mixin MEDIA-NOT-SM {
+  @media (min-width: $screen-md-min) { @content; }
+}
+
+@mixin MEDIA-MD {
+  @media (max-width: $screen-md-max) { @content; }
+}
+@mixin MEDIA-NOT-MD {
+  @media (min-width: $screen-lg-min) { @content; }
+}
+
+@mixin MEDIA-LG {
+  @media (min-width: $screen-lg-min) { @content; }
+}

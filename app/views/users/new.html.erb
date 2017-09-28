@@ -1,0 +1,63 @@
+<%
+  redirect_url = params[:redirect_url].present? ?
+    params[:redirect_url] : session[:redirect_url] || request.fullpath.force_encoding('utf-8')
+%>
+
+<div class="signup-login-wrapper">
+  <% if flash[:success].present? %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:alert].present? %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <%= form_for @user, html: { class: 'new-user-form' } do |f| %>
+    <input type="hidden" name="redirect_url" value="<%= redirect_url %>">
+
+    <% if @user.errors.any? %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <div class="sn-btn">
+      <a href="/auth/facebook" class="btn" id="facebook-signup" data-redirect-url="/">
+        <i class="fa fa-facebook-square" aria-hidden="true"></i><span>Facebook Sign Up</span>
+      </a>
+      <div class="text-line">
+        <span class="or">OR</span>
+      </div>
+    </div>
+
+    <div class="field-wrapper">
+      <div class="first_name">
+        <input type="text" name="user[first_name]" class="form-control" placeholder="First name">
+      </div>
+      <div class="last_name">
+        <input type="text" name="user[last_name]" class="form-control" placeholder="Last name">
+      </div>
+      <div class="email">
+        <input type="email" name="user[email]" class="form-control" placeholder="Email">
+      </div>
+      <div class="password">
+        <input type="password" name="user[password]" class="form-control" placeholder="Password">
+      </div>
+      <div class="password_confirmation">
+        <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Password confirmation">
+      </div>
+    </div>
+
+    <div class="submit">
+      <%= f.submit 'Submit', class: 'btn' %>
+    </div>
+  <% end %>
+
+  <%= render 'layouts/signup_login_modal_other_option' %>
+</div>
+
+<%= javascript_include_tag 'modal/signup_login_modal_helper' %>

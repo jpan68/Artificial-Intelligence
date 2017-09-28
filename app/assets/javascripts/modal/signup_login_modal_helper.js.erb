@@ -1,0 +1,46 @@
+var displayErrors = function(errors) {
+	for (var field in errors) {
+		$errorField = $('.' + field);
+		if (!$errorField.hasClass('error')) {
+		  var errorDOM = '<span class="error-message">' + errors[field] + '</span>';
+		  $errorField.addClass('error').append(errorDOM);
+		}
+	}
+  $('.error input').on('click focus', function(e) {
+		var $errorField = $(this).parents('.error');
+		$errorField.removeClass('error');
+		$errorField.find('span').remove();
+		});
+	$('.signup-login-wrapper input[type=submit]').removeAttr('data-disable-with disabled');
+}
+
+$('document').ready(function() {
+  $('.new-user-form, .login-form').submit(function(e) {
+    e.preventDefault();
+
+    var csrf_param = $('meta[name="csrf-param"]').attr('content');
+    var csrf_token = $('meta[name="csrf-token"]').attr('content');
+    var params = $(this).serialize();
+    var url = $(this).attr('action');
+
+    var ajaxOptions = {
+      url: url,
+      type: "POST",
+      data: params,
+      headers: { 'X-CSRF-Token': csrf_token },
+      crossDomain: true,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function(data, status, xhr) {
+        window.location = data['redirect_url'];
+      },
+      error: function(xhr, status, err) {
+        var errors = xhr.responseJSON.errors;
+        displayErrors(errors);
+      }
+    };
+    $.ajax(ajaxOptions);
+  })
+
+})
