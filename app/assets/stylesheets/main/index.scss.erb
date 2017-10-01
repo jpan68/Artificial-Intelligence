@@ -7,7 +7,7 @@ img.transparent:hover {
 }
 
 .parallax {
-    background-image: url('<%= asset_path("background.jpg") %>') ;
+    background-image: url('<%= asset_path("background.png") %>') ;
     height: 100vh;
     background-attachment: fixed;
     background-position: center;
@@ -27,8 +27,6 @@ img.transparent:hover {
     right: 0;
 
     content: " ";
-    opacity: 0.3;
-    background-color: #404040;
 
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=20);
@@ -72,11 +70,6 @@ img.transparent:hover {
     padding-right: 34px;
     padding-left: 15px;
 }
-
-/*header {
-background-image: url('../img/background_city.jpg');
-background-position: top 100px;
-}*/
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
@@ -138,7 +131,8 @@ img.navbar-logo {
 }
 
 .navbar-custom {
-  background: rgba(255, 255, 255, 0.21);
+  background: rgba(0, 0, 0, 0.14);
+  font-family: 'Heebo', sans-serif;
 }
 
 .navbar-custom .navbar-nav li a:hover {
@@ -177,7 +171,23 @@ header#main::before {
     left: 0;
     bottom: 0;
     right: 0;
-    Background-color: rgba(41, 41, 41, 0.46);
+}
+
+header#zoom-box {
+    background: #7d7e7d;
+    background: linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%);
+    border-radius:10px;
+    width:0;
+    height:0;
+    position:relative;
+    top:150px;
+    left:150px;
+    border:solid 4px yellow;
+    font-size:0;
+    line-height:0;
+    vertical-align:middle;
+    text-align:center;
+    color:#fff;
 }
 
 .sectionTitle {
