@@ -7,30 +7,16 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <% if logged_in? %>
-                  <ul class="nav navbar-nav navb-position">
-                    <li>
-                        <a href="#">My Playlist</a>
-                    </li>
-                    <li class="dropdown" id="water-report-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><%= @current_user.first_name %></b> <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="water-report-dropdown">
-                            <li>
-                                <a href="<%= edit_user_path(@current_user) %>">Edit Profile</a>
-                            </li>
-                            <li>
-                                <a href="<%= logout_path %>" data-method="delete">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                  </ul>
-                  <% else %>
-                  <ul class="nav navbar-nav navb-position">
-                      <li class="page-scroll">
-                          <a href="#features">HOME</a>
-                      </li>
-                  </ul>
-                <% end %>
+            <ul class="nav navbar-nav navb-position">
+                <li class="page-scroll">
+                    <a href="#sectionOne">SUBSECTION 1</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#sectionTwo">SUBSECTION 2</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="#sectionThree">SUBSECTION 3</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
