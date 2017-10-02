@@ -13,6 +13,7 @@ Rails.application.config.assets.version = '1.0'
  	jquery.min.js
  	bootstrap.min.js
  	modal/signup_login_modal_helper.js
-  videos/template_style.css
-  aos.js
+    videos/template_style.css
+    aos.js
+    tagcanvas.min.js
  )
