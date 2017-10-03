@@ -1784,45 +1784,6 @@ background: url(../images/social.png) no-repeat 0px 0px;
 		font-size: 12px;
 	}
 }
-@media (max-width: 1280px) {
-	.time {
-		top: 91% !important;
-	}
-	.clck {
-		right: 11%;
-	}
-	.small-clck {
-		right: 14% !important;
-	}
-	.small-time {
-		top: 85% !important;
-	}
-	.show-time {
-		top: 85% !important;
-	}
-	.show-clock {
-		right: 26%;
-	}
-	.slider-time {
-		top: 88% !important;
-	}
-	.history-left {
-		width: 83px !important;
-		height: 83px;
-	}
-	.movie-time {
-		top: 93% !important;
-	}
-	.movie-clock {
-		right: 17% !important;
-	}
-	.sports-clock {
-		right: 21% !important;
-	}
-	.sports-tome {
-		top: 80% !important;
-	}
-}
 @media (max-width: 1080px) {
 	form.navbar-form.navbar-right {
 		width: 47%;
