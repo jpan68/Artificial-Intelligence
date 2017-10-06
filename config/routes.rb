@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   # Videos
   get 'videos' => 'videos#index'
 
+  get 'animated' => 'plasmaticisosurfacemaster#animated'
+
 end
