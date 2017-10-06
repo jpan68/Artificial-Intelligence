@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'main#index'
 
   get 'homepage' => 'main#homepage'
+  get 'animated' => 'main#animated'
 
   # Sessions
   get 'login' => 'sessions#new'
@@ -18,7 +19,5 @@ Rails.application.routes.draw do
 
   # Videos
   get 'videos' => 'videos#index'
-
-  get 'animated' => 'plasmaticisosurfacemaster#animated'
 
 end
